@@ -1,5 +1,5 @@
 # TeddyBears-SPRING2024-SQA
-Chase Gardner \
+Chase Garner \
 Justin Whisonant \
 Kevin Cui \
 Teddy Cooke 
