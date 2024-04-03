@@ -1,5 +1,5 @@
 # TeddyBears-SPRING2024-SQA
-Chase Garner - D \
+Chase Gamer - D \
 Justin Whisonant - C \
 Kevin Cui - B \
 Teddy Cooke - A Done
