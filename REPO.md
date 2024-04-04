@@ -9,3 +9,4 @@ Part C:
 
 
 Part D: 
+Cloned the repository, added the .github/workflows/ directory, then added Codacy using github actions. To do this I created the codacy-analysis.yaml file in the directory mentioned above, then I went to https://github.com/marketplace/actions/codacy-analysis-cli to get the code for the file. Finally I was able to see it running by making a small change to one of the files.
