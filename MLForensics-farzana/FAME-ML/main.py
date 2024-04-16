@@ -12,7 +12,14 @@ import os
 import pandas as pd
 import py_parser 
 import numpy as np 
+import logging
 
+def giveMeLoggingObject():
+    format_str = '%(asctime)s %(message)s'
+    file_name  = 'SIMPLE-LOGGER.log'
+    logging.basicConfig(format=format_str, filename=file_name, level=logging.INFO)
+    loggerObj = logging.getLogger('simple-logger')
+    return loggerObj
 
 def giveTimeStamp():
   tsObj = time.time()
@@ -146,6 +153,10 @@ def getAllPythonFilesinRepo(path2dir):
 				if (file_.endswith( constants.PY_FILE_EXTENSION ) and (py_parser.checkIfParsablePython( full_path_file ) )   ):
 					valid_list.append(full_path_file) 
 	valid_list = np.unique(  valid_list )
+	'''
+    Logging statement #1 
+    '''
+	giveMeLoggingObject.info('Generic information: getting results: %s', str(valid_list))
 	return valid_list
 
 
@@ -162,6 +173,10 @@ def runFameML(inp_dir, csv_fil):
 		print(constants.ANALYZING_KW, subfolder)
 		print('-'*50)
 	full_df = pd.DataFrame( df_list ) 
+	'''
+    Logging statement #2 
+    '''
+	giveMeLoggingObject.info('Generic information: getting results: %s', str(df_list))
 	# print(full_df.head())
 	full_df.to_csv(csv_fil, header= constants.CSV_HEADER, index=False, encoding= constants.UTF_ENCODING)     
 	return output_event_dict

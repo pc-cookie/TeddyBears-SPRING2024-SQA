@@ -27,7 +27,7 @@ def reportProp( res_file ):
     fields2explore = ['DATA_LOAD_COUNT', 'MODEL_LOAD_COUNT', 'DATA_DOWNLOAD_COUNT',	'MODEL_LABEL_COUNT', 'MODEL_OUTPUT_COUNT',	
                       'DATA_PIPELINE_COUNT', 'ENVIRONMENT_COUNT', 'STATE_OBSERVE_COUNT',  'TOTAL_EVENT_COUNT'
                      ]
-                     
+
     for field in fields2explore:
         field_res_list = res_df[res_df['CATEGORY'] == field ]   
         prop_val_list = field_res_list['PROP_VAL'].tolist() 

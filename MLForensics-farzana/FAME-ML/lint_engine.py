@@ -7,6 +7,14 @@ Executes the pattern matching and data flow analysis
 
 import py_parser
 import constants 
+import logging
+
+def giveMeLoggingObject():
+    format_str = '%(asctime)s %(message)s'
+    file_name  = 'SIMPLE-LOGGER.log'
+    logging.basicConfig(format=format_str, filename=file_name, level=logging.INFO)
+    loggerObj = logging.getLogger('simple-logger')
+    return loggerObj
 
 def getDataLoadCount( py_file ):
     data_load_count = 0 
@@ -331,7 +339,11 @@ def getModelLoadCountd( py_file ):
             print( constants.CONSOLE_STR_DISPLAY.format( constants.CONSOLE_STR_MODEL_LOAD, func_line , py_file  ) )
             
     LOGGING_IS_ON_FLAG = py_parser.checkLoggingPerData( py_tree, constants.DUMMY_LOG_KW ) 
-    # print(LOGGING_IS_ON_FLAG, model_load_countd) 
+    # print(LOGGING_IS_ON_FLAG, model_load_countd)
+    '''
+    Logging statement #4
+    '''
+    giveMeLoggingObject.info('Generic information: getting results: %s', str(py_tree)) 
     return model_load_countd 
     
     
@@ -365,6 +377,10 @@ def getDataDownLoadCount( py_file ):
             
     LOGGING_IS_ON_FLAG = py_parser.checkLoggingPerData( py_tree, constants.DUMMY_LOG_KW ) 
     # print(LOGGING_IS_ON_FLAG, data_download_count) 
+    '''
+    Logging statement #5
+    '''
+    giveMeLoggingObject.info('Generic information: getting results: %s', str(py_tree))
     return data_download_count 
     
     
@@ -436,6 +452,10 @@ def getModelLabelCountb( py_file ):
     model_label_countb = 0 
     py_tree = py_parser.getPythonParseObject(py_file)
     func_assign_list  = py_parser.getTupAssiDetails( py_tree ) 
+    '''
+    Logging statement #3
+    '''
+    giveMeLoggingObject.info('Generic information: getting results: %s', str(py_tree))
     for assign_ in func_assign_list:
         lhs, var_s, var_d, rhs_var_iter, func_line = assign_ 
         
@@ -443,7 +463,7 @@ def getModelLabelCountb( py_file ):
         
         	if ( (var_s == constants.SENT_KW ) and (var_d == constants.SENT_KW )  and (rhs_var_iter == constants.INPUT_BATCH_LIST_KW ) ):
         		model_label_countb += 1 
-        		print( constants.CONSOLE_STR_DISPLAY.format( constants.CONSOLE_STR_MODEL_LABEL, func_line , py_file  ) )
+        	    print( constants.CONSOLE_STR_DISPLAY.format( constants.CONSOLE_STR_MODEL_LABEL, func_line , py_file  ) )
             
     LOGGING_IS_ON_FLAG = py_parser.checkLoggingPerData( py_tree, constants.DUMMY_LOG_KW ) 
     # print(LOGGING_IS_ON_FLAG, model_label_countb) 
