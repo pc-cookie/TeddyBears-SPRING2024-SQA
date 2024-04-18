@@ -2,7 +2,7 @@
 Part A: 
 Added a bandit command on the MLForensics folder in the pre-commit to check for security weaknesses in files. Since the .git/hook folder cannot be pushed to GitHub, the pre-commit file was added to the GitHub repo for other group members to add to their own machines.
 
-Part B: 
+Part B: Added a file called fuzz.py to check for errors, found five like asked in the project.md. Running it will give the user a list of failure in crashes of errors. 
 
 
 Part C: 
