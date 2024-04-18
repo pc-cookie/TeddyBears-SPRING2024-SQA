@@ -17,17 +17,17 @@ def deleteRepo(dirName, type_):
 try:
     deleteRepo(None, 'INVALID_DIRECTORY_NAME')
 except Exception as e:
-    crashes.append(f"deleteRepo: {type(e).__name__}: {str(e)}")
+    crashes.append(f"Failure 1: {type(e).__name__}: {str(e)}")
 
 try:
     deleteRepo('', 'EMPTY_DIRECTORY_NAME')
 except Exception as e:
-    crashes.append(f"deleteRepo: {type(e).__name__}: {str(e)}")
+    crashes.append(f"Failure 2: {type(e).__name__}: {str(e)}")
 
 try:
     deleteRepo('nonexistent_dir', 'NONEXISTENT_DIRECTORY')
 except Exception as e:
-    crashes.append(f"deleteRepo: {type(e).__name__}: {str(e)}")
+    crashes.append(f"Failure 3: {type(e).__name__}: {str(e)}")
 
 def dumpContentIntoFile(strP, fileP):
     fileToWrite = open( fileP, 'w')
@@ -39,12 +39,12 @@ def dumpContentIntoFile(strP, fileP):
 try:
     dumpContentIntoFile("test", None)
 except Exception as e:
-    crashes.append(f"dumpContentIntoFile: {type(e).__name__}: {str(e)}")
+    crashes.append(f"Failure 2: {type(e).__name__}: {str(e)}")
 
 try:
     dumpContentIntoFile("test", '')
 except Exception as e:
-    crashes.append(f"dumpContentIntoFile: {type(e).__name__}: {str(e)}")
+    crashes.append(f"Failure 3: {type(e).__name__}: {str(e)}")
 
 def makeChunks(the_list, size_):
     for i in range(0, len(the_list), size_):
@@ -55,7 +55,7 @@ try:
     for chunk in makeChunks([1, 2, 3], 0):
         print(chunk)
 except Exception as e:
-    crashes.append(f"makeChunks: {type(e).__name__}: {str(e)}")
+    crashes.append(f"Failure 4: {type(e).__name__}: {str(e)}")
 
 def cloneRepo(repo_name, target_dir):
     cmd_ = "git clone " + repo_name + " " + target_dir
@@ -69,17 +69,17 @@ def cloneRepo(repo_name, target_dir):
 try:
     cloneRepo(None, 'target')
 except Exception as e:
-    crashes.append(f"cloneRepo: {type(e).__name__}: {str(e)}")
+    crashes.append(f"Failure 5: {type(e).__name__}: {str(e)}")
 
 try:
     cloneRepo('', 'target')
 except Exception as e:
-    crashes.append(f"cloneRepo: {type(e).__name__}: {str(e)}")
+    crashes.append(f"Failure 5: {type(e).__name__}: {str(e)}")
 
 try:
     cloneRepo('invalid_repo_name', 'target')
 except Exception as e:
-    crashes.append(f"cloneRepo: {type(e).__name__}: {str(e)}")
+    crashes.append(f"Failure 5: {type(e).__name__}: {str(e)}")
 
 
 def checkPythonFile(path2dir):
@@ -105,17 +105,17 @@ def checkPythonFile(path2dir):
 try:
     checkPythonFile(None)
 except Exception as e:
-    crashes.append(f"checkPythonFile: {type(e).__name__}: {str(e)}")
+    crashes.append(f"Failure 6: {type(e).__name__}: {str(e)}")
 
 try:
     checkPythonFile('')
 except Exception as e:
-    crashes.append(f"checkPythonFile: {type(e).__name__}: {str(e)}")
+    crashes.append(f"Failure 6: {type(e).__name__}: {str(e)}")
 
 try:
     checkPythonFile('nonexistent_dir')
 except Exception as e:
-    crashes.append(f"checkPythonFile: {type(e).__name__}: {str(e)}")
+    crashes.append(f"Failure 6: {type(e).__name__}: {str(e)}")
 
 
 # Print crashes at the end
