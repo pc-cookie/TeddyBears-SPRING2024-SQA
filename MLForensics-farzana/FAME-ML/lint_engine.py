@@ -448,10 +448,10 @@ def getModelLabelCount( py_file ):
     return model_label_count 
     
 
-def getModelLabelCountb( py_file ):
+def getModelLabelCountb(py_file):
     model_label_countb = 0 
     py_tree = py_parser.getPythonParseObject(py_file)
-    func_assign_list  = py_parser.getTupAssiDetails( py_tree ) 
+    func_assign_list = py_parser.getTupAssiDetails(py_tree) 
     '''
     Logging statement #3
     '''
@@ -459,15 +459,15 @@ def getModelLabelCountb( py_file ):
     for assign_ in func_assign_list:
         lhs, var_s, var_d, rhs_var_iter, func_line = assign_ 
         
-        if ( constants.LABEL_KW in lhs):
-        
-        	if ( (var_s == constants.SENT_KW ) and (var_d == constants.SENT_KW )  and (rhs_var_iter == constants.INPUT_BATCH_LIST_KW ) ):
-        		model_label_countb += 1 
-        	    print( constants.CONSOLE_STR_DISPLAY.format( constants.CONSOLE_STR_MODEL_LABEL, func_line , py_file  ) )
-            
-    LOGGING_IS_ON_FLAG = py_parser.checkLoggingPerData( py_tree, constants.DUMMY_LOG_KW ) 
+        if constants.LABEL_KW in lhs:
+            if var_s == constants.SENT_KW and var_d == constants.SENT_KW and rhs_var_iter == constants.INPUT_BATCH_LIST_KW:
+                model_label_countb += 1 
+                print(constants.CONSOLE_STR_DISPLAY.format(constants.CONSOLE_STR_MODEL_LABEL, func_line, py_file))
+
+    LOGGING_IS_ON_FLAG = py_parser.checkLoggingPerData(py_tree, constants.DUMMY_LOG_KW) 
     # print(LOGGING_IS_ON_FLAG, model_label_countb) 
-    return model_label_countb 
+    return model_label_countb
+
     
     
 def getModelOutputCount( py_file ):
@@ -758,18 +758,19 @@ def getExcepts( py_file ) :
     return EXCEPT_LOGGING_IS_ON_FLAG
     
 
-def checkLoggingLibrary( py_file ):
+def checkLoggingLibrary(py_file):
     incomplete_logging_count = 0 
     py_tree = py_parser.getPythonParseObject(py_file)
-    import_list  = py_parser.getImport( py_tree ) 
+    import_list = py_parser.getImport(py_tree) 
     for import_ in import_list:
         library_ = import_ 
         
-        if( (library_ == constants.LOGGING_KW ) or (library_ == constants.TENSORFLOW_KW ) or (library_ == constants.SYMNET_KW )):
-        	# print(library_)
-        	return True
+        if library_ == constants.LOGGING_KW or library_ == constants.TENSORFLOW_KW or library_ == constants.SYMNET_KW:
+            # print(library_)
+            return True
         else:
-        	return False 
+            return False
+
     
 
 def getIncompleteLoggingCount( py_file ):
